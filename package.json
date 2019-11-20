@@ -1,0 +1,19 @@
+{
+  "name": "shinsports",
+  "version": "1.0.0",
+  "description": "ShinSports is a MEAN Stack application that allows users to stay up to date with different sport matches according to their interests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gh-Ch/ShinSports.git"
+  },
+  "author": "Shinigami",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gh-Ch/ShinSports/issues"
+  },
+  "homepage": "https://github.com/Gh-Ch/ShinSports#readme"
+}
