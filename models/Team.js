@@ -3,9 +3,13 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const TeamSchema = new Schema({
+name: {
+    type: String,
+    required: true
+},
 coach: {
     type: String,
-    require: true
+    required: true
 },
 president: {
     type: String,
@@ -13,11 +17,11 @@ president: {
 },
 foundationDate: {
     type: Date,
-    default: Date.now
 },
 logo: {
     type: String,
-    default: 'public\\teams\\default.png'
+    default: 'public\\teams\\default.png',
+    required: true,
 },
 category: {
     type: Schema.Types.ObjectId,

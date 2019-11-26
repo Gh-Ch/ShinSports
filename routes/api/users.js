@@ -115,7 +115,7 @@ const {errors , isValid} = validateLoginInput(req.body);
                     .then(isValid => {
                     if (isValid) {
                         // variable containing user data
-                        const payload = {id : user.id , name: user.name ,avatar: user.avatar,pts: user.pts}
+                        const payload = {id : user.id , username: user.username ,avatar: user.avatar,admin: user.admin}
                         // Sign Token
                         jwt.sign(
                             payload,
@@ -143,6 +143,7 @@ res.json({
 id: req.user.id,
 username: req.user.username,
 avatar: req.user.avatar,
+admin: req.user.admin
 });
 });
 

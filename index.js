@@ -8,6 +8,7 @@ const passport = require('passport');
 const users = require('./routes/api/users');
 const players = require('./routes/api/players');
 const teams = require('./routes/api/teams');
+const categories = require('./routes/api/categories');
 
 const app = express();
 
@@ -40,8 +41,9 @@ app.get('/', (req, res)=> {
    
 //Use Routes
 app.use('/api/users',users);
-/*app.use('/api/teams',teams);
-app.use('/api/players',players);*/
+app.use('/api/teams',teams);
+app.use('/api/players',players);
+app.use('/api/categories',categories);
 
 //launch server
 const port = 5000;

@@ -3,9 +3,13 @@ const Schema = mongoose.Schema;
 
 //Create Schema
 const PlayerSchema = new Schema({
+name: {
+        type: String,
+        required: true
+},
 age: {
     type: Number,
-    require: true
+    required: true
 },
 weight: {
     type: Number,
@@ -17,15 +21,14 @@ height: {
 },
 photo: {
     type: String,
-    default: 'public\\players\\default.png'
+    default: 'public\\players\\default.png',
+    required: true,
 },
 careerStart: {
     type: Date,
-    default: Date.now
 },
 birthDate: {
     type: Date,
-    default: Date.now
 },
 category: {
     type: Schema.Types.ObjectId,

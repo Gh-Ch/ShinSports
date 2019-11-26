@@ -1,4 +1,4 @@
 module.exports={
-    mongoURI: 'mongodb+srv://Shintaki:shintaki@cluster0-9qu8z.mongodb.net/test?retryWrites=true&w=majority',
+    mongoURI: 'mongodb+srv://shintaki:shintaki@cluster0-g1mpt.mongodb.net/test?retryWrites=true&w=majority',
     secret: 'secretusedinjwt'
-    }
+    }   
