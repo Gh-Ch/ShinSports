@@ -1,0 +1,52 @@
+<form [formGroup]="add.playerForm" class="normal-form">
+    <h2>Add Player Form</h2>
+  <mat-grid-list cols="2" rowheight="300px">
+    <mat-grid-tile>
+      <div class="controles-container">
+        <input type="hidden" formControlName="$id">
+        <mat-form-field>
+          <input formControlName="name" matInput placeholder="Name*">
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="country" matInput placeholder="Country*">
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="number" formControlName="age" matInput placeholder="Age*">
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="date" formControlName="birthDate" matInput placeholder="Birth Date">
+        </mat-form-field>
+        <mat-form-field>
+          <input type="date" formControlName="careerStart" matInput placeholder="Career Start">
+         </mat-form-field>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="controles-container">
+          <mat-form-field>
+            <ngx-mat-file-input #photo formControlName="photo" placeholder="Photo" ></ngx-mat-file-input>
+            <mat-icon matSuffix *ngIf="photo.empty">folder_open</mat-icon>
+            <button mat-icon-button matSuffix *ngIf="!photo.empty" (click)="photo.clear($event)">
+              <mat-icon>clear</mat-icon>
+            </button>
+          </mat-form-field>
+            <mat-form-field>
+                <input type="number" formControlName="height" matInput placeholder="Height">
+            </mat-form-field>
+            <mat-form-field>
+              <input type="number" formControlName="weight" matInput placeholder="Weight">
+          </mat-form-field>
+          <mat-form-field>
+            <input type="number" formControlName="followers" matInput placeholder="Followers">
+          </mat-form-field>
+            <div class="button-row">
+              <button mat-raised-button color="primary" type="submit" [disabled]="add.playerForm.invalid" (click)="add.logger()">Add</button>
+            </div>
+        </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</form>
+

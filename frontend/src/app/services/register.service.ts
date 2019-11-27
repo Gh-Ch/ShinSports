@@ -31,4 +31,8 @@ export class RegisterService {
     admin: false
   })
   }
+
+  logger() {
+    console.log(this.form);
+  }
 }

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AppRoutingModule, ROUTING } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,13 +13,19 @@ import { RegisterComponent } from './register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
+import { AddPlayerComponent } from './add-player/add-player.component';
+import { AddTeamComponent } from './add-team/add-team.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    AddCategoryComponent,
+    AddPlayerComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +35,9 @@ import { LoginComponent } from './login/login.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ROUTING,
-    MaterialModule
+    MaterialModule,
+    MaterialFileInputModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

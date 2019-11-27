@@ -12,14 +12,14 @@ export class RegisterComponent implements OnInit {
 
   userModel = new User(0, '', '', '', '', false);
 
-  constructor(private http: HttpClient, private service: RegisterService) { }
+  constructor(private http: HttpClient, private register: RegisterService) { }
 
   ngOnInit() {
   }
 
   onClear(){
-    this.service.form.reset();
-    this.service.initializeFormGroup();
+    this.register.form.reset();
+    this.register.initializeFormGroup();
   }
 
   newUser(registerFrom){
