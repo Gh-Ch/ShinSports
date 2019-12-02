@@ -5,6 +5,8 @@ form.normal-form{
 .controles-container{
   width: 100%;
   padding: 5%;
+  background-color: rgba(255, 255, 255, 0.603);
+  width: 800px;
 }
 
 .controles-container > *{
@@ -20,3 +22,4 @@ mat-radio-group mat-radio-button{
 }
 
 h2 {color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+

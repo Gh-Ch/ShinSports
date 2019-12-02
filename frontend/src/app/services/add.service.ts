@@ -62,29 +62,16 @@ addCategory() {
 addPlayer() {
   const headers = new HttpHeaders()
     // tslint:disable-next-line: max-line-length
-<<<<<<< HEAD
     .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZDY4YjYyNGY0MzRkMWU5Y2RhMDY1ZiIsInVzZXJuYW1lIjoiU2hpbnRha2kiLCJhdmF0YXIiOiJwdWJsaWNcXGF2YXRhcnNcXGRlZmF1bHQucG5nIiwiYWRtaW4iOnRydWUsImlhdCI6MTU3NTI4NDkzMCwiZXhwIjoxNTc1Mjg4NTMwfQ.8dqyAwb6J99wSiS4Bsr8ypkl1Um7FW-UaeyGK8d6NP0');
 
-    console.log('Player : ',this.playerForm.value);
-    var fd = new FormData();
-    fd.append('name',this.playerForm.value.name);
-    fd.append('weight',this.playerForm.value.weight);
-    fd.append('height',this.playerForm.value.height);
-    fd.append('age',this.playerForm.value.age);
-    fd.append('photo',this.playerForm.value.photo.files[0]);
-    this.http.post('api/players', fd, {headers})
-=======
-    .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZTAxZDE2MGI4NTI0MWI1NDk0YmMxZSIsInVzZXJuYW1lIjoic2hpbmlnYW1pIiwiYXZhdGFyIjoicHVibGljXFxhdmF0YXJzXFxkZWZhdWx0LnBuZyIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzUyODM1NDYsImV4cCI6MTU3NTI4NzE0Nn0.XHTtj9XSpspp4g7_pf0u7XAtCQgemB2YdEDWrk5p3bc');
-
+  console.log('Player : ', this.playerForm.value);
   const fd = new FormData();
   fd.append('name', this.playerForm.value.name);
   fd.append('weight', this.playerForm.value.weight);
   fd.append('height', this.playerForm.value.height);
   fd.append('age', this.playerForm.value.age);
   fd.append('photo', this.playerForm.value.photo.files[0]);
-  console.log('repsonse ', fd);
   this.http.post('api/players', fd, {headers})
->>>>>>> 6f70fd4d574507354fc807e07fea73959be98c21
     .subscribe((response) => {
       console.log('repsonse ', response);
     });

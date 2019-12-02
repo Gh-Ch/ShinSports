@@ -1,8 +1,6 @@
 <form [formGroup]="register.form" class="normal-form" >
   <h2>Register Form</h2>
-    <mat-grid-list cols="2" rowheight="300px">
-      <mat-grid-tile>
-        <div class="controles-container">
+        <div class="controles-container container">
           <input type="hidden" formControlName="$id">
           <mat-form-field>
             <input formControlName="username" matInput placeholder="UserName*">
@@ -22,10 +20,6 @@
             <input type="password" formControlName="password2" matInput placeholder="Password Validation*">
             <mat-error *ngIf="register.form.controls['password2'].errors?.required">This field is required.</mat-error>
           </mat-form-field>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile>
-          <div class="controles-container">
               <div class="add-button-padding">
                   <mat-label>Gender :</mat-label><br>
                 <mat-radio-group formControlName="gender">
@@ -41,15 +35,10 @@
                   <mat-icon>clear</mat-icon>
                 </button>
               </mat-form-field>
-              <div class="add-button-padding">
-                <mat-checkbox formControlName="admin">Admin</mat-checkbox>
-              </div>
               <div class="button-row">
                 <button mat-raised-button color="primary" type="submit" [disabled]="register.form.invalid" (click)="newUser()">Submit</button>
                 <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
               </div>
           </div>
-      </mat-grid-tile>
-    </mat-grid-list>
   </form>
 

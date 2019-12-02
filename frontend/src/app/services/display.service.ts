@@ -10,13 +10,13 @@ import { Observable } from 'rxjs';
 export class DisplayService {
   constructor(private http: HttpClient) {
    }
-  getPlayer(id : number): Observable<Player> {
-    return this.http.get<Player>('api/players/'+id)            
+  getPlayer(id: number): Observable<Player> {
+    return this.http.get<Player>('api/players/' + id) ;
   }
-  getTeam(id : number): Observable<Team> {
-    return this.http.get<Team>('api/teams/'+id)            
+  getTeam(id: number): Observable<Team> {
+    return this.http.get<Team>('api/teams/' + id) ;
   }
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>('api/categories/')            
+    return this.http.get<Category[]>('api/categories/') ;
   }
 }
