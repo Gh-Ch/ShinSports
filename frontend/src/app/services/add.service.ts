@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AddService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   categoryForm: FormGroup = new FormGroup({
     $id: new FormControl(null),
@@ -22,8 +23,8 @@ export class AddService {
     careerStart: new FormControl(new Date()),
     birthDate: new FormControl(new Date()),
     photo: new FormControl(''),
-    height: new FormControl(),
-    weight: new FormControl()
+    height: new FormControl(''),
+    weight: new FormControl('')
   });
 
   teamForm: FormGroup = new FormGroup({
@@ -43,7 +44,47 @@ logger() {
   } else if (this.playerForm.dirty) {
     console.log(this.playerForm.value);
   } else if (this.teamForm.dirty) {
-    console.log(this.teamForm.value); 
+    console.log(this.teamForm.value);
     }
+}
+
+addCategory() {
+  const headers = new HttpHeaders()
+    // tslint:disable-next-line: max-line-length
+    .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZTAxZDE2MGI4NTI0MWI1NDk0YmMxZSIsInVzZXJuYW1lIjoic2hpbmlnYW1pIiwiYXZhdGFyIjoicHVibGljXFxhdmF0YXJzXFxkZWZhdWx0LnBuZyIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ5Njg3MzYsImV4cCI6MTU3NDk3MjMzNn0.AHOAoZUNrr9s8gJk3xRDGu3ucaxg1B0q21zZLlsfniQ');
+
+  this.http.post('api/categories', this.categoryForm.value, {headers})
+    .subscribe((response) => {
+      console.log('repsonse ', response);
+    });
+}
+
+addPlayer() {
+  const headers = new HttpHeaders()
+    // tslint:disable-next-line: max-line-length
+    .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZTAxZDE2MGI4NTI0MWI1NDk0YmMxZSIsInVzZXJuYW1lIjoic2hpbmlnYW1pIiwiYXZhdGFyIjoicHVibGljXFxhdmF0YXJzXFxkZWZhdWx0LnBuZyIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzUyODM1NDYsImV4cCI6MTU3NTI4NzE0Nn0.XHTtj9XSpspp4g7_pf0u7XAtCQgemB2YdEDWrk5p3bc');
+
+  const fd = new FormData();
+  fd.append('name', this.playerForm.value.name);
+  fd.append('weight', this.playerForm.value.weight);
+  fd.append('height', this.playerForm.value.height);
+  fd.append('age', this.playerForm.value.age);
+  fd.append('photo', this.playerForm.value.photo.files[0]);
+  console.log('repsonse ', fd);
+  this.http.post('api/players', fd, {headers})
+    .subscribe((response) => {
+      console.log('repsonse ', response);
+    });
+}
+
+addTeam() {
+  const headers = new HttpHeaders()
+    // tslint:disable-next-line: max-line-length
+    .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZTAxZDE2MGI4NTI0MWI1NDk0YmMxZSIsInVzZXJuYW1lIjoic2hpbmlnYW1pIiwiYXZhdGFyIjoicHVibGljXFxhdmF0YXJzXFxkZWZhdWx0LnBuZyIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ5Njg3MzYsImV4cCI6MTU3NDk3MjMzNn0.AHOAoZUNrr9s8gJk3xRDGu3ucaxg1B0q21zZLlsfniQ');
+
+  this.http.post('api/teams', this.teamForm.value, {headers})
+    .subscribe((response) => {
+      console.log('repsonse ', response);
+    });
 }
 }

@@ -62,7 +62,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),upload.single('phot
         careerStart:req.body.careerStart,
         birthDate:req.body.birthDate,
         weight: req.body.weight,
-        category: req.body.category,
+        //category: req.body.category,
     });
 
     if(!isEmpty(req.file)) {newPlayer.photo=req.file.path}

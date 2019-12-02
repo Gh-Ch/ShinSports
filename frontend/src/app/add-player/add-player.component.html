@@ -1,5 +1,5 @@
+<h2>Add Player Form</h2>
 <form [formGroup]="add.playerForm" class="normal-form">
-    <h2>Add Player Form</h2>
   <mat-grid-list cols="2" rowheight="300px">
     <mat-grid-tile>
       <div class="controles-container">
@@ -13,7 +13,7 @@
           <mat-error>This field is required.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input type="number" formControlName="age" matInput placeholder="Age*">
+          <input type="text" formControlName="age" matInput placeholder="Age*">
           <mat-error>This field is required.</mat-error>
         </mat-form-field>
         <mat-form-field>
@@ -34,16 +34,16 @@
             </button>
           </mat-form-field>
             <mat-form-field>
-                <input type="number" formControlName="height" matInput placeholder="Height">
+                <input type="text" formControlName="height" matInput placeholder="Height">
             </mat-form-field>
             <mat-form-field>
-              <input type="number" formControlName="weight" matInput placeholder="Weight">
+              <input type="text" formControlName="weight" matInput placeholder="Weight">
           </mat-form-field>
           <mat-form-field>
             <input type="number" formControlName="followers" matInput placeholder="Followers">
           </mat-form-field>
             <div class="button-row">
-              <button mat-raised-button color="primary" type="submit" [disabled]="add.playerForm.invalid" (click)="add.logger()">Add</button>
+              <button mat-raised-button color="primary" type="submit" [disabled]="add.playerForm.invalid" (click)="add.addPlayer()">Add</button>
             </div>
         </div>
     </mat-grid-tile>

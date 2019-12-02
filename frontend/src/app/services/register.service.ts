@@ -10,7 +10,7 @@ export class RegisterService {
 
   form: FormGroup = new FormGroup({
     $id: new FormControl(null),
-    userName: new FormControl('', Validators.required),
+    username: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(8)]),
     password2: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -22,7 +22,7 @@ export class RegisterService {
   initializeFormGroup() {
     this.form.setValue({
     $id: null,
-    userName: '',
+    username: '',
     email: '',
     password: '',
     password2: '',
@@ -33,6 +33,6 @@ export class RegisterService {
   }
 
   logger() {
-    console.log(this.form);
+    console.log(this.form.value);
   }
 }
