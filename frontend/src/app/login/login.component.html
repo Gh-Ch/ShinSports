@@ -1,4 +1,4 @@
-<mat-card class="card">
+<mat-card class="card container">
         <mat-card-header>
           <mat-card-title>LogIn</mat-card-title>
           <mat-card-subtitle>ShinSports!</mat-card-subtitle>
@@ -18,7 +18,7 @@
         </mat-card-content>
         <mat-card-actions>
             <div class="button-row">
-                <button mat-raised-button color="primary" type="submit" [disabled]="login.form.invalid">LogIn</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="login.form.invalid" (click)="login.connect()">LogIn</button>
                 or <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Register</a>
               </div>
         </mat-card-actions>

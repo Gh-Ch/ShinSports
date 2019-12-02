@@ -5,6 +5,8 @@ import { RegisterComponent } from './register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
+import { DisplayTeamComponent } from './display-team/display-team.component';
+import { DisplayPlayerComponent } from './display-player/display-player.component';
 
 
 const routes: Routes = [
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'addCategory', component: AddCategoryComponent},
   {path: 'addPlayer', component: AddPlayerComponent},
-  {path: 'addTeam', component: AddTeamComponent}
+  {path: 'addTeam', component: AddTeamComponent},
+  {path: 'displayTeam/:id', component: DisplayTeamComponent},
+  {path: 'displayPlayer/:id', component: DisplayPlayerComponent}
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);

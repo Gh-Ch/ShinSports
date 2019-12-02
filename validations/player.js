@@ -52,9 +52,9 @@ else{
 if(Validator.isEmpty(data.weight)){
         errors.weight='Weight field is required'
     }
-if(Validator.isEmpty(data.category)){
+/*if(Validator.isEmpty(data.category)){
         errors.category='Category field is required'
-    }
+    }*/
 return{
     errors,
     isValid: isEmpty(errors)

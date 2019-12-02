@@ -16,6 +16,9 @@ import { LoginComponent } from './login/login.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { AddTeamComponent } from './add-team/add-team.component';
+import { DisplayTeamComponent } from './display-team/display-team.component';
+import { DisplayPlayerComponent } from './display-player/display-player.component';
+import { DisplayCategoriesComponent } from './display-categories/display-categories.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { AddTeamComponent } from './add-team/add-team.component';
     LoginComponent,
     AddCategoryComponent,
     AddPlayerComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    DisplayTeamComponent,
+    DisplayPlayerComponent,
+    DisplayCategoriesComponent
   ],
   imports: [
     BrowserModule,

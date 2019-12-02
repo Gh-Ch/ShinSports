@@ -1,0 +1,15 @@
+nav{
+    width:77%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom:15px;
+    background-color: rgba(0,0,0,0.48);
+}
+.nav-item .nav-link {
+    color: rgba(255,255,255,0.8);
+    font-family: 'Times New Roman', Times, serif;
+}
+.navbar-brand {
+    font-weight: 10;
+    color: rgba(255,255,255,0.8);
+}

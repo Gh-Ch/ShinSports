@@ -1,11 +1,11 @@
-<form [formGroup]="register.form" class="normal-form">
+<form [formGroup]="register.form" class="normal-form" >
   <h2>Register Form</h2>
     <mat-grid-list cols="2" rowheight="300px">
       <mat-grid-tile>
         <div class="controles-container">
           <input type="hidden" formControlName="$id">
           <mat-form-field>
-            <input formControlName="userName" matInput placeholder="UserName*">
+            <input formControlName="username" matInput placeholder="UserName*">
             <mat-error>This field is required.</mat-error>
           </mat-form-field>
           <mat-form-field>
@@ -45,7 +45,7 @@
                 <mat-checkbox formControlName="admin">Admin</mat-checkbox>
               </div>
               <div class="button-row">
-                <button mat-raised-button color="primary" type="submit" [disabled]="register.form.invalid" (click)="register.logger()">Submit</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="register.form.invalid" (click)="newUser()">Submit</button>
                 <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
               </div>
           </div>

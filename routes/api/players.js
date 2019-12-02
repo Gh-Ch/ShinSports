@@ -39,6 +39,7 @@ const validatePlayerInput = require('../../validations/player');
 // @description Create Player
 // @access Private 
 router.post('/',passport.authenticate('jwt',{session:false}),upload.single('photo'),(req,res)=>{
+    console.log(req.file)
     const {errors , isValid} = validatePlayerInput(req.body,req.file);
     if(!req.user.admin)
     {   
@@ -62,7 +63,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),upload.single('phot
         careerStart:req.body.careerStart,
         birthDate:req.body.birthDate,
         weight: req.body.weight,
-        category: req.body.category,
+        //category: req.body.category,
     });
 
     if(!isEmpty(req.file)) {newPlayer.photo=req.file.path}

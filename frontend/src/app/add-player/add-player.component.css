@@ -10,7 +10,9 @@ form.normal-form{
 .controles-container > *{
   width: 100%;
 }
-
+mat-grid-tile{
+  padding: 0px;
+}
 mat-radio-group mat-radio-button{
   margin-left: 5px;
 }
@@ -19,5 +21,5 @@ mat-radio-group mat-radio-button{
   margin-left: 5px;
 }
 
-h2 { margin-top: 50px; margin-bottom: -150px;; color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+h2 {  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
 
