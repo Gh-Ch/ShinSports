@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable,Output,EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from '../Models/user';
-
 export interface LoginResponse {
   success: boolean;
   token: string;
@@ -14,6 +13,7 @@ export interface LoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   authToken:any
   user:any
   constructor(private http: HttpClient) { }
@@ -28,6 +28,7 @@ export class LoginService {
     localStorage.setItem('user',JSON.stringify(user))
     this.authToken=token;
     this.user=user;
+    this.getLoggedInName.emit('true');
   }
   loadToken(){
     const token = localStorage.getItem('id_token')
@@ -39,6 +40,7 @@ export class LoginService {
     this.authToken= null;
     this.user = null;
     localStorage.clear();
+    this.getLoggedInName.emit(false);
   }
   loginCall(formValue): Observable<LoginResponse> {
     return this.http.post<LoginResponse>('api/users/login', formValue)

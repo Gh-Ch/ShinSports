@@ -8,10 +8,15 @@ import { FlashMessagesService } from 'angular2-flash-messages';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private login: LoginService,private router: Router,private flashMessagesService: FlashMessagesService) { }
+  isLogged: boolean 
+  constructor(private login: LoginService,private router: Router,private flashMessagesService: FlashMessagesService) { 
+    login.getLoggedInName.subscribe(state => this.changeState(state));
+  }
 
   ngOnInit() {
+  }
+  changeState(state:boolean){
+    this.isLogged=state;
   }
   onLogoutClick(){
     this.login.logout();
