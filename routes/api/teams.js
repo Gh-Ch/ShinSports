@@ -60,6 +60,8 @@ router.post('/',passport.authenticate('jwt',{session:false}),upload.single('logo
     const newTeam=new Team({
         name:req.body.name,
         coach:req.body.coach,
+        league:req.body.league,
+        country:req.body.country,
         foundationDate:req.body.foundationDate,
         president: req.body.president,
     });
@@ -67,7 +69,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),upload.single('logo
     Category.findOne({name: req.body.category})
             .then(category =>{
                 if(category){
-                    newTeam.category=category.id;
+                    newTeam.category=category.name;
                 }
                 else{          
                         errors.category="Category not found"

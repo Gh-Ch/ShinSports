@@ -10,7 +10,7 @@
         <p class="title col-4">Country : </p> <p class="col-4"> {{currentTeam.country}}</p>
     </div>
   <div *ngIf="currentTeam.foundationDate" class="row justify-content-around">
-        <p class="title col-4">Founded In :</p> <p class="col-4"> {{currentTeam.foundationDate}}</p> 
+        <p class="title col-4">Founded In :</p> <p class="col-4"> {{currentTeam.foundationDate| date : 'y'}}</p> 
     </div>
     <div class="row justify-content-around">
   <p class="title col-4">President : </p> <p class="col-4"> {{currentTeam.president}}</p>

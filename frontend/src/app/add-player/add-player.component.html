@@ -32,15 +32,23 @@
             <button mat-icon-button matSuffix *ngIf="!photo.empty" (click)="photo.clear($event)">
               <mat-icon>clear</mat-icon>
             </button>
+            <mat-error>This field is required.</mat-error>
           </mat-form-field>
             <mat-form-field>
                 <input type="text" formControlName="height" matInput placeholder="Height">
+                <mat-error>This field is required.</mat-error>
             </mat-form-field>
             <mat-form-field>
               <input type="text" formControlName="weight" matInput placeholder="Weight">
+              <mat-error>This field is required.</mat-error>
           </mat-form-field>
           <mat-form-field>
-            <input type="number" formControlName="followers" matInput placeholder="Followers">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category" matInput>
+              <mat-option *ngFor="let category of categories" [value]="category.name">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
           </mat-form-field>
             <div class="button-row">
               <button mat-raised-button color="primary" type="submit" [disabled]="add.playerForm.invalid" (click)="add.addPlayer()">Add</button>

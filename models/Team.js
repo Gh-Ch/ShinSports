@@ -7,6 +7,14 @@ name: {
     type: String,
     required: true
 },
+country: {
+    type: String,
+    required: true
+},
+league: {
+    type: String,
+    required: true
+},
 coach: {
     type: String,
     required: true
@@ -24,8 +32,8 @@ logo: {
     required: true,
 },
 category: {
-    type: Schema.Types.ObjectId,
-    ref: "categories"
+    type: String,
+    required: true
   },
 });
 module.exports = Team = mongoose.model('teams',TeamSchema);

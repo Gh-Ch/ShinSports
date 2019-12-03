@@ -7,6 +7,10 @@ name: {
         type: String,
         required: true
 },
+country: {
+    type: String,
+    required: true
+},
 age: {
     type: Number,
     required: true
@@ -31,8 +35,8 @@ birthDate: {
     type: Date,
 },
 category: {
-    type: Schema.Types.ObjectId,
-    ref: "categories"
+    type: String,
+    required: true
   },
 });
 module.exports = Player = mongoose.model('players',PlayerSchema);

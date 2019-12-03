@@ -6,7 +6,7 @@ import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import {MatIconModule} from '@angular/material/icon';
-
+import {FlashMessagesModule} from 'angular2-flash-messages';
 import { AppRoutingModule, ROUTING } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
@@ -43,7 +43,8 @@ import { DisplayCategoriesComponent } from './display-categories/display-categor
     ROUTING,
     MaterialModule,
     MaterialFileInputModule,
-    MatIconModule
+    MatIconModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

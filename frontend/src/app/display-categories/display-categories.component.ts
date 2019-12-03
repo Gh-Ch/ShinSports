@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DisplayService } from '../services/display.service';
 import {Category} from '../Models/category';
-import { $ } from 'protractor';
 
 @Component({
   selector: 'app-display-categories',

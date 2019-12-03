@@ -1,23 +1,46 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import {User} from '../Models/user';
 
+export interface LoginResponse {
+  success: boolean;
+  token: string;
+  msg: string;
+  user: User
+}
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
+  authToken:any
+  user:any
   constructor(private http: HttpClient) { }
 
   form: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required)
   });
-
-  connect() {
-    this.http.post('api/users/login', this.form.value)
-      .subscribe((response) => {
-        console.log('repsonse ', response);
-      });
+  
+  storeUserData(token,user){
+    localStorage.setItem('id_token',token)
+    localStorage.setItem('user',JSON.stringify(user))
+    this.authToken=token;
+    this.user=user;
+  }
+  loadToken(){
+    const token = localStorage.getItem('id_token')
+    this.authToken=token;
+    const user = localStorage.getItem('user')
+    this.user=JSON.parse(user);
+  }
+  logout(){
+    this.authToken= null;
+    this.user = null;
+    localStorage.clear();
+  }
+  loginCall(formValue): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>('api/users/login', formValue)
   }
 }

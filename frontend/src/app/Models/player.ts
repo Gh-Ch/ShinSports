@@ -4,6 +4,7 @@ export class Player {
         public age: number
         public height: number
         public weight: number
+        public country: string
         public photo: string
         public careerStart: Date
         public birthDate: Date

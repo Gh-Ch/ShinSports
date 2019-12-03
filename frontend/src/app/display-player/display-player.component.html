@@ -9,6 +9,9 @@
   <div class="row justify-content-around">
         <p class="title col-4">Age : </p> <p class="col-4"> {{currentPlayer.age}}</p>
     </div>
+    <div class="row justify-content-around">
+      <p class="title col-4" *ngIf="currentPlayer.country" >Country: </p> <p class="col-4">{{currentPlayer.country}}</p>
+    </div>
   <div class="row justify-content-around">
         <p class="title col-4">Height :</p> <p class="col-4"> {{currentPlayer.height}} Cm</p> 
     </div>
@@ -16,10 +19,10 @@
   <p class="title col-4">Weight : </p> <p class="col-4"> {{currentPlayer.weight}} Kg</p>
 </div>
   <div class="row justify-content-around">
-  <p class="title col-4" *ngIf="currentPlayer.careerStart" >Career Start: </p> <p class="col-4">{{currentPlayer.careerStart}}</p>
+  <p class="title col-4" *ngIf="currentPlayer.careerStart" >Career Start: </p> <p class="col-4">{{currentPlayer.careerStart | date : 'mediumDate'}}</p>
 </div>
   <div class="row justify-content-around">
-  <p class="title col-4" *ngIf="currentPlayer.birthDate" >Birth Date : </p> <p class="col-4">{{currentPlayer.birthDate}}</p>
+  <p class="title col-4" *ngIf="currentPlayer.birthDate" >Birth Date : </p> <p class="col-4">{{currentPlayer.birthDate | date : 'mediumDate'}}</p>
 </div>
 </div>
 

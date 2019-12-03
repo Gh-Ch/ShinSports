@@ -13,6 +13,10 @@
           <mat-error>This field is required.</mat-error>
         </mat-form-field>
         <mat-form-field>
+          <input formControlName="league" matInput placeholder="League*">
+          <mat-error>This field is required.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <input formControlName="president" matInput placeholder="President*">
           <mat-error>This field is required.</mat-error>
         </mat-form-field>
@@ -33,9 +37,16 @@
           <button mat-icon-button matSuffix *ngIf="!logo.empty" (click)="logo.clear($event)">
             <mat-icon>clear</mat-icon>
           </button>
+          <mat-error>This field is required.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input type="number" formControlName="followers" matInput placeholder="Followers">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="category" matInput>
+            <mat-option *ngFor="let category of categories" [value]="category.name">
+              {{category.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error>This field is required.</mat-error>
         </mat-form-field>
         <div class="button-row">
           <button mat-raised-button color="primary" type="submit" [disabled]="add.teamForm.invalid"

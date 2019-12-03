@@ -43,8 +43,9 @@ const validateLoginInput = require('../../validations/login');
 // @description register users  
 // @access Public
 router.post('/register',upload.single('avatar') , (req,res)=>{
+  let errors = {};
     //Check Validation
-    const {errors , isValid} = validateRegisterInput(req.body);
+    /*const {errors , isValid} = validateRegisterInput(req.body);
     if(!isValid)
     {   
         //Stop upload and throw errors
@@ -53,8 +54,8 @@ router.post('/register',upload.single('avatar') , (req,res)=>{
             if (err) throw err;
             console.log('file was deleted');
           });
-        return res.status(400).json(errors);
-    }
+        return res.status(400).json({errors : errors , success : false});
+    }*/
 
 
     User.findOne({email: req.body.email})
@@ -67,7 +68,7 @@ router.post('/register',upload.single('avatar') , (req,res)=>{
                 console.log('file was deleted');
               });
             errors.email='Email already exists';
-            return res.status(400).json(errors)
+            return res.status(400).json({msg : errors.email , success : false})
         } 
         else {
           
@@ -84,7 +85,8 @@ router.post('/register',upload.single('avatar') , (req,res)=>{
             if (err) throw err;
             newUser.password=hash;
             newUser.save()
-               .then(user => res.json(user))
+               .then(user => res.json({user : user,success:true,msg: 'Registration successful , Redirected to login page'}
+                ))
                .catch(err => console.log(err))
             })
           }) 
@@ -97,19 +99,20 @@ router.post('/register',upload.single('avatar') , (req,res)=>{
 router.post('/login',(req,res) => {
 const email = req.body.email;
 const password = req.body.password;
+let errors = {};
 //Check Validation
-const {errors , isValid} = validateLoginInput(req.body);
+/*const {errors , isValid} = validateLoginInput(req.body);
     if(!isValid)
     {
-        return res.status(400).json(errors);
-    }
+        return res.status(400).json({errors : errors , success : false});
+    }*/
     User.findOne({email})
         .then(user =>
             {
             //Check if user with the email exists
             if (!user) {
                 errors.email='No user matches this email';
-                return res.status(404).json(errors);}
+                return res.status(404).json({msg : errors.mail , success : false});}
             //Check if password is valid 
             bcrypt.compare(password,user.password)
                     .then(isValid => {
@@ -117,20 +120,23 @@ const {errors , isValid} = validateLoginInput(req.body);
                         // variable containing user data
                         const payload = {id : user.id , username: user.username ,avatar: user.avatar,admin: user.admin}
                         // Sign Token
+                        message= 'Login successful , Welcome '+user.username
                         jwt.sign(
                             payload,
                             keys.secret,
                             {expiresIn: 3600},
                             (err,token) => {
                             res.json({
+                                user: payload,
                                 success: true,
-                                token: 'Bearer ' + token
+                                token: 'Bearer ' + token,
+                                msg: message
                                 })
                             });
                         }
                     else {
                         errors.password='Invalid password';
-                        res.status(404).json(errors)}                 
+                        res.status(404).json({msg : errors.password , success : false})}                 
                 });
 
         });

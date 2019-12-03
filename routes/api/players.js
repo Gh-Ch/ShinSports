@@ -63,9 +63,18 @@ router.post('/',passport.authenticate('jwt',{session:false}),upload.single('phot
         careerStart:req.body.careerStart,
         birthDate:req.body.birthDate,
         weight: req.body.weight,
-        //category: req.body.category,
+        country: req.body.country,
     });
-
+    Category.findOne({name: req.body.category})
+    .then(category =>{
+        if(category){
+            newPlayer.category=category.name;
+        }
+        else{          
+                errors.category="Category not found"
+                return res.status(400).json(errors);
+        }
+    })
     if(!isEmpty(req.file)) {newPlayer.photo=req.file.path}
     else{errors.content='No file uploaded';
     return res.status(400).json(errors)}
