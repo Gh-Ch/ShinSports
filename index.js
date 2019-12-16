@@ -9,6 +9,7 @@ const users = require('./routes/api/users');
 const players = require('./routes/api/players');
 const teams = require('./routes/api/teams');
 const categories = require('./routes/api/categories');
+const matches = require('./routes/api/matches');
 
 const app = express();
 app.use((req, res, next) => {
@@ -23,24 +24,7 @@ app.use((req, res, next) => {
     );
     next();
   });
-  app.use("/api/posts", (req, res, next) => {
-    const posts = [
-      {
-        id: "fadf12421l",
-        title: "First server-side post",
-        content: "This is coming from the server"
-      },
-      {
-        id: "ksajflaj132",
-        title: "Second server-side post",
-        content: "This is coming from the server!"
-      }
-    ];
-    res.status(200).json({
-      message: "Posts fetched succesfully!",
-      posts: posts
-    });
-  });
+
   
 //Public Folder
 app.use('/public', express.static('public'));
@@ -53,7 +37,7 @@ app.use(bodyParser.json());
 const db = require('./config/keys').mongoURI;
 //Connect to MongoDB
 mongoose
-    .connect(db,{useNewUrlParser: true})
+    .connect(db,{useNewUrlParser: true,useUnifiedTopology: true})
     .then(()=>console.log("MongoDB connected"))
     .catch(err => console.log(err))
 
@@ -74,6 +58,7 @@ app.use('/api/users',users);
 app.use('/api/teams',teams);
 app.use('/api/players',players);
 app.use('/api/categories',categories);
+app.use('/api/matches',matches);
 
 //launch server
 const port = 5000;

@@ -1,8 +1,8 @@
 const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
-
+const Entity = require('./Entity')
 //Create Schema
-const PlayerSchema = new Schema({
+const Player = Entity.discriminator('players',new Schema({
 name: {
         type: String,
         required: true
@@ -38,6 +38,11 @@ category: {
     type: String,
     required: true
   },
-});
-module.exports = Player = mongoose.model('players',PlayerSchema);
+nbrFollowers: {
+    type: Number,
+    default: 0
+},
+}),
+);
+module.exports = mongoose.model('players')
 

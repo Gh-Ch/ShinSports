@@ -122,7 +122,7 @@ router.get('/:id',(req,res)=>{
 // @description delete team
 // @access Private
  
-router.post('/delete',passport.authenticate('jwt',{session:false}),(req,res)=>{
+router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const errors = {};
     Team.findById(req.params.id)
         .then(team => {
@@ -131,4 +131,44 @@ router.post('/delete',passport.authenticate('jwt',{session:false}),(req,res)=>{
                     .then(()=>{console.log('team removed')})})
         .catch(err=>res.status(404).json({message : 'no team with this id found'}))
     });
+
+//@route POST /api/teams/sub/:id
+//@description Follow a team
+//@access  Private
+router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
+    Team.findById(req.params.id)      
+         .then(team=>{
+          if(!team)
+            {   console.log(req.params.id)
+                return res.status(404).json({message: 'no team with this id to follow'})}
+          else
+          {
+            if(req.user.interestList.filter(follow=>follow.entity==req.params.id).length>0){
+            // get index to remove  
+            const removeIndex = req.user.interestList
+            .map(followToRemove=>followToRemove.entity.id)
+            .indexOf(req.params.id); 
+            //remove from array
+            req.user.interestList.splice(removeIndex,1);
+            //Save
+            req.user.save().then(user=>res.json(user.interestList));
+            // decrement number of followers in team
+            team.nbrFollowers-=1;
+            team.save()
+                .then(console.log("number of followers updated"))
+                .catch(err => {console.log(err)})
+            }     
+            else {// Add user handle to subs array
+            req.user.interestList.unshift({entity : team.id});
+            req.user.save().then(user =>res.json(user.interestList));
+            // increment number of followers in team
+            team.nbrFollowers+=1;
+            team.save()
+                .then(console.log("number of followers updated"))
+                .catch(err => {console.log(err)})
+              }
+          }
+        })
+        .catch(err=>{console.log(err);res.status(404).json({message: 'no team with this id to follow '})})
+  });
 module.exports = router;

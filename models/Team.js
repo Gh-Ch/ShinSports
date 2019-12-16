@@ -1,8 +1,8 @@
 const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
-
+const Entity = require('./Entity')
 //Create Schema
-const TeamSchema = new Schema({
+const Team = Entity.discriminator('teams',new Schema({
 name: {
     type: String,
     required: true
@@ -35,6 +35,10 @@ category: {
     type: String,
     required: true
   },
-});
-module.exports = Team = mongoose.model('teams',TeamSchema);
-
+nbrFollowers: {
+    type: Number,
+    default: 0
+},
+}),
+);
+module.exports = mongoose.model('teams')

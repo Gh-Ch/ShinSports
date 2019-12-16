@@ -149,8 +149,25 @@ res.json({
 id: req.user.id,
 username: req.user.username,
 avatar: req.user.avatar,
-admin: req.user.admin
+admin: req.user.admin,
 });
 });
-
+//@route GET /api/users/follow
+//@description Return current followed matches
+//@access  Private
+router.get('/follow',passport.authenticate('jwt',{session: false}), (req, res)=>{
+  User.findById(req.user.id)
+      .populate({path: 'matchesFollowed.match'})
+      .then(user  =>  res.json (user.matchesFollowed))
+      .catch(err => console.log(err))
+  });
+//@route GET /api/users/interest
+//@description Return current followed teams/players
+//@access  Private
+router.get('/interest',passport.authenticate('jwt',{session: false}), (req, res)=>{
+  User.findById(req.user.id)
+      .populate({path: 'interestList.entity'})
+      .then(user  =>  res.json (user.interestList))
+      .catch(err => console.log(err))
+  });
 module.exports = router;

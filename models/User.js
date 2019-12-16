@@ -23,6 +23,33 @@ admin: {
     type: Boolean,
     default: false,
 },
+interestList: [
+    {
+        entity: {
+            type: Schema.Types.ObjectId,
+            ref:'entities',
+        },
+        date: {
+            type: Date,
+            default: Date.now()
+        }
+    }
+
+],
+matchesFollowed: [
+    {
+        match: {
+            type: Schema.Types.ObjectId,
+            ref:'matches',
+        },
+        date: {
+            type: Date,
+            default: Date.now()
+        }
+    }
+
+],
 });
+
 module.exports = User = mongoose.model('users',UserSchema);
 

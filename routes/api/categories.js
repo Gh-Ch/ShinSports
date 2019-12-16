@@ -59,7 +59,7 @@ Category.findById(req.params.id)
 // @description delete Category
 // @access Private
 
-router.post('/delete',passport.authenticate('jwt',{session:false}),(req,res)=>{
+router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
 const errors = {};
 Category.findById(req.params.id)
     .then(category => {
