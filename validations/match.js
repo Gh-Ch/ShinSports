@@ -8,6 +8,7 @@ data.competition = !isEmpty(data.competition) ? data.competition : '';
 data.teamOne = !isEmpty(data.teamOne) ? data.teamOne : '';
 data.teamTwo = !isEmpty(data.teamTwo) ? data.teamTwo : '';
 data.startDate = !isEmpty(data.startDate) ? data.startDate : '';
+data.startTime = !isEmpty(data.startTime) ? data.startTime : '';
 data.stadium = !isEmpty(data.stadium) ? data.stadium : '';
 
 
@@ -25,6 +26,9 @@ if(Validator.isEmpty(data.startDate)){
     errors.startDate='Start date field is required'
 }
 
+if(Validator.isEmpty(data.startTime)){
+    errors.startTime='Start Time field is required'
+}
 if(Validator.isEmpty(data.competition)){
     errors.competition='Competition field is required'
 }

@@ -15,6 +15,10 @@ startDate: {
     type: Date,
     required: true
 },
+startTime:{
+    type:Number,
+    required: true
+},
 teamOne: {
     type: Schema.Types.ObjectId,
     ref:'entities',

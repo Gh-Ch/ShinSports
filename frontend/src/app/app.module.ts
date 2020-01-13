@@ -19,6 +19,9 @@ import { AddTeamComponent } from './add-team/add-team.component';
 import { DisplayTeamComponent } from './display-team/display-team.component';
 import { DisplayPlayerComponent } from './display-player/display-player.component';
 import { DisplayCategoriesComponent } from './display-categories/display-categories.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { FrontPageComponent } from './front-page/front-page.component';
+import { MatchElementComponent } from './match-element/match-element.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,9 @@ import { DisplayCategoriesComponent } from './display-categories/display-categor
     AddTeamComponent,
     DisplayTeamComponent,
     DisplayPlayerComponent,
-    DisplayCategoriesComponent
+    DisplayCategoriesComponent,
+    FrontPageComponent,
+    MatchElementComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import { DisplayCategoriesComponent } from './display-categories/display-categor
     MaterialModule,
     MaterialFileInputModule,
     MatIconModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

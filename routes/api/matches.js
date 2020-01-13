@@ -33,6 +33,7 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
         stadium:req.body.stadium,
         competition:req.body.competition,
         startDate:req.body.startDate,
+        startTime:req.body.startTime,
     });
     // Verifying Category
     Category.findOne({name: req.body.category})
@@ -84,17 +85,40 @@ router.get('/',(req,res)=>{
         .then(matches=> {res.json(matches)})
         .catch(err => res.status(404).json({message: 'no matches found'}))
 });    
+
+// @route GET api/matches/date
+// @description get matches and sort by date
+// @access Public
+router.get('/date',(req,res)=>{
+    Match.find()
+       .sort({ startDate: -1})
+       .populate('teamOne')
+       .populate('teamTwo')
+       .then(matches=> {res.json(matches)})
+       .catch(err => res.status(404).json({message: 'no matches found'}))
+   })
+
+// @route GET api/matches/popular
+// @description get matches and sort by popularity
+// @access Public
+router.get('/popular',(req,res)=>{
+     Match.find()
+        .sort({nbrFollowers: -1})
+        .populate('teamOne')
+        .populate('teamTwo')
+        .then(matches=> {res.json(matches)})
+        .catch(err => res.status(404).json({message: 'no matches found'}))
+    })
 // @route GET api/matches/:id
 // @description show match by id
 // @access Public
 router.get('/:id',(req,res)=>{
-Match.findById(req.params.id)
-    .populate('teamOne')
-    .populate('teamTwo')
-    .then(match=>res.json(match))
-    .catch(err=>res.status(404).json({message : 'no match with this id found'}))
-})
-
+    Match.findById(req.params.id)
+        .populate('teamOne')
+        .populate('teamTwo')
+        .then(match=>res.json(match))
+        .catch(err=>res.status(404).json({message : 'no match with this id found'}))
+    })
 // @route DELETE api/matches/:id
 // @description delete Match
 // @access Private

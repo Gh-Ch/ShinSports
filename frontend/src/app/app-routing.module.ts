@@ -7,9 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DisplayTeamComponent } from './display-team/display-team.component';
 import { DisplayPlayerComponent } from './display-player/display-player.component';
+import { FrontPageComponent } from './front-page/front-page.component';
 
 
 const routes: Routes = [
+  {path: '' , component: FrontPageComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addCategory', component: AddCategoryComponent},
