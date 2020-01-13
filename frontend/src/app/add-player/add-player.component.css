@@ -5,6 +5,9 @@ form.normal-form{
 .controles-container{
   width: 100%;
   padding: 5%;
+  background-color: rgba(255, 255, 255, 0.603);
+  height: 400px;
+  width: 800px;
 }
 
 .controles-container > *{
