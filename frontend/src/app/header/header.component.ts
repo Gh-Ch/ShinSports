@@ -14,6 +14,13 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.login.loadToken();
+  if(!this.login.authToken){
+    this.isLogged=false;
+  }
+  else{
+    this.isLogged=true;
+  }
   }
   changeState(state:boolean){
     this.isLogged=state;

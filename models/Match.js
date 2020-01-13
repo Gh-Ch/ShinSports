@@ -16,7 +16,7 @@ startDate: {
     required: true
 },
 startTime:{
-    type:Number,
+    type:String,
     required: true
 },
 teamOne: {

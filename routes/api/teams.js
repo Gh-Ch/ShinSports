@@ -132,7 +132,7 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
         .catch(err=>res.status(404).json({message : 'no team with this id found'}))
     });
 
-//@route POST /api/teams/sub/:id
+//@route POST /api/teams/follow/:id
 //@description Follow a team
 //@access  Private
 router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
@@ -145,8 +145,9 @@ router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)
           {
             if(req.user.interestList.filter(follow=>follow.entity==req.params.id).length>0){
             // get index to remove  
+            console.log('hello',req.user.interestList)
             const removeIndex = req.user.interestList
-            .map(followToRemove=>followToRemove.entity.id)
+            .map(followToRemove=>followToRemove.entity)
             .indexOf(req.params.id); 
             //remove from array
             req.user.interestList.splice(removeIndex,1);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DisplayService } from '../services/display.service';
+import { Match } from '../Models/match';
 
 @Component({
   selector: 'app-front-page',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./front-page.component.css']
 })
 export class FrontPageComponent implements OnInit {
-
-  constructor() { }
+  private popularMatches : Match[] = []
+  constructor(private displayService : DisplayService) { }
 
   ngOnInit() {
+    this.displayService.getPopularMatches().subscribe(matches =>{
+      this.popularMatches=matches;
+    })
   }
 
 }

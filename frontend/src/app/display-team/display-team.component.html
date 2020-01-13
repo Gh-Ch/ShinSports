@@ -23,7 +23,10 @@
 </div>
 </div>
 
-  <p class="card-footer"><button class="btn btn-outline-success">Subscribe</button></p>
+<p class="card-footer" *ngIf='isLogged'>
+    <button *ngIf='!subbed' class="btn btn-outline-success" (click)='subOrUnsub()'>Subscribe</button>
+    <button *ngIf='subbed' class="btn btn-outline-danger" (click)='subOrUnsub()'>Unsubscribe</button>
+  </p>
 </div>
 <div *ngIf="!currentTeam" class="title" style="text-align: center; font-size: 40px;">
     No Team found

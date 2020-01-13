@@ -144,7 +144,7 @@ router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)
             if(req.user.interestList.filter(follow=>follow.entity==req.params.id).length>0){
             // get index to remove  
             const removeIndex = req.user.interestList
-            .map(followToRemove=>followToRemove.entity.id)
+            .map(followToRemove=>followToRemove.entity)
             .indexOf(req.params.id); 
             //remove from array
             req.user.interestList.splice(removeIndex,1);

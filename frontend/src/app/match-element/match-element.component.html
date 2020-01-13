@@ -17,25 +17,25 @@
   <div class="card-body container">
     <div class="row justify-content-around">
     <div class="col-md-5">
-        <img src="http://localhost:5000/public/teams/1575366295608real-madrid-logo-preview.png" class="card-img-top" style ="height: 100px ; width:100px">
-        <h5 class="card-title teamDisplay">Real Madrid</h5>
+        <img src="http://localhost:5000/{{match.teamOne.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
+        <h5 class="card-title teamDisplay">{{match.teamOne.name}}</h5>
     </div>
-    <div class="col-md-2" > <h4 class='timeAndDate'>20 Jan</h4><hr> <h5 class='teamDisplay'>Vs</h5><hr> <h4 class='timeAndDate'>20:00</h4>
+    <div class="col-md-2" > <h4 class='timeAndDate'>{{match.startDate|date:'MMM d'}}</h4><hr> <h5 class='teamDisplay'>Vs</h5><hr> <h4 class='timeAndDate'>{{match.startTime}}</h4>
     </div>
     <div class="col-md-5">
-        <img src="http://localhost:5000/public/teams/FC-Barcelona-logo-2018-640x480.png" class="card-img-top" style ="height: 100px ; width:100px">
-        <h5 class="card-title teamDisplay">F.C Barcelona</h5>
+        <img src="http://localhost:5000/{{match.teamTwo.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
+        <h5 class="card-title teamDisplay">{{match.teamTwo.name}}</h5>
     </div>
   </div>
   <hr>
   <div class="row justify-content-center">
-      <p class="title col-6 teamDisplay">Category: </p> <p class="col-6 teamDisplay"> Football </p>
+      <p class="title col-6 teamDisplay">Category: </p> <p class="col-6 teamDisplay"> {{match.category}} </p>
   </div> 
   <div class="row justify-content-center">
-      <p class="title col-6 teamDisplay">Competition:</p> <p class="col-6 teamDisplay"> La Liga </p>
+      <p class="title col-6 teamDisplay">Competition:</p> <p class="col-6 teamDisplay"> {{match.competition}} </p>
   </div>
   <div class="row justify-content-center">
-      <p class="title col-6 teamDisplay">Stadium: </p> <p class="col-6 teamDisplay"> Santiago Bernabeau </p>
+      <p class="title col-6 teamDisplay">Stadium: </p> <p class="col-6 teamDisplay"> {{match.stadium}} </p>
   </div>
   </div>
 </div>

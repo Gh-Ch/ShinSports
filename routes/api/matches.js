@@ -133,7 +133,7 @@ Match.findById(req.params.id)
     .catch(err=>res.status(404).json({message : 'no Match with this id found'}))
 });
 
-//@route POST /api/matches/sub/:id
+//@route POST /api/matches/follow/:id
 //@description Follow a match
 //@access  Private
 router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
