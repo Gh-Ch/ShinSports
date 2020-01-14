@@ -5,6 +5,7 @@ import {Team} from '../Models/team';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SubscribeService } from '../services/subscribe.service';
+import { Match } from '../Models/match';
 @Component({
   selector: 'app-display-team',
   templateUrl: './display-team.component.html',
@@ -12,6 +13,7 @@ import { SubscribeService } from '../services/subscribe.service';
 })
 export class DisplayTeamComponent implements OnInit {
   isLogged: boolean;
+  matchesAvailable: Match[]=[]
   subbed: boolean = false;
   public teamId: number;
   public currentTeam: Team;
@@ -34,7 +36,6 @@ export class DisplayTeamComponent implements OnInit {
       this.teamId = params['id']; 
       // checking if already subbed to this team
       this.subscribeService.getInterestList().subscribe(data =>{
-        console.log(data)
         if(data.filter(follow=>follow.entity._id==this.teamId).length>0){
           this.subbed=true;
         }
@@ -42,6 +43,9 @@ export class DisplayTeamComponent implements OnInit {
       // get the team
       this.displayService.getTeam(this.teamId).subscribe((team)=>{
         this.currentTeam=team;
+      })
+      this.displayService.getMatchesByTeam(this.teamId).subscribe((matches)=>{
+        this.matchesAvailable=matches
       })
     })
   }

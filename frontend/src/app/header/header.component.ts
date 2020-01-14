@@ -9,6 +9,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 })
 export class HeaderComponent implements OnInit {
   isLogged: boolean 
+  isAdmin: boolean
   constructor(private login: LoginService,private router: Router,private flashMessagesService: FlashMessagesService) { 
     login.getLoggedInName.subscribe(state => this.changeState(state));
   }
@@ -21,9 +22,17 @@ export class HeaderComponent implements OnInit {
   else{
     this.isLogged=true;
   }
+  if (this.login.user.admin){
+    this.isAdmin=true;
+  }
+  else{
+    this.isAdmin=false;
+  }
+  console.log(this.isAdmin)
   }
   changeState(state:boolean){
     this.isLogged=state;
+    this.isAdmin=!this.isAdmin;
   }
   onLogoutClick(){
     this.login.logout();

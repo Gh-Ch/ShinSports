@@ -29,4 +29,10 @@ export class DisplayService {
   getRecentMatches(): Observable<Match[]>{
     return this.http.get<Match[]>('api/matches/date') ;
   }
+  getMatchesByCategory(name: String): Observable<Match[]>{
+    return this.http.get<Match[]>('api/matches/category/'+ name) ;
+  }
+  getMatchesByTeam(id: Number): Observable<Match[]>{
+    return this.http.get<Match[]>('api/matches/team/'+ id) ;
+  }
 }

@@ -19,7 +19,6 @@ const validateMatchInput = require('../../validations/match');
 //TODO Test that the two entites are of the same type
 router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {errors , isValid} = validateMatchInput(req.body);
-    console.log(req.body);
     if(!req.user.admin)
     {   
         //If user is not an admin deny creation
@@ -86,6 +85,27 @@ router.get('/',(req,res)=>{
         .then(matches=> {res.json(matches)})
         .catch(err => res.status(404).json({message: 'no matches found'}))
 });    
+// @route GET api/matches
+// @description show matches of specific team 
+// @access Public
+router.get('/team/:id',(req,res)=>{
+    Match.find({$or: [{'teamOne': req.params.id},{'teamTwo': req.params.id}] })
+        .populate('teamOne')
+        .populate('teamTwo')
+        .then(matches=> {res.json(matches)})
+        .catch(err => res.status(404).json({message: 'no matches found'}))
+});   
+// @route GET api/matches/date
+// @description get matches by category
+// @access Public
+router.get('/category/:name',(req,res)=>{
+    Match.find({category: req.params.name})
+       .sort({ startDate: -1})
+       .populate('teamOne')
+       .populate('teamTwo')
+       .then(matches=> {res.json(matches)})
+       .catch(err => res.status(404).json({message: 'no matches found'}))
+   })
 
 // @route GET api/matches/date
 // @description get matches and sort by date
@@ -148,7 +168,7 @@ router.post('/follow/:id',passport.authenticate('jwt',{session:false}),(req,res)
             if(req.user.matchesFollowed.filter(follow=>follow.match==req.params.id).length>0){
             // get index to remove  
             const removeIndex = req.user.matchesFollowed
-            .map(followToRemove=>followToRemove.match.id)
+            .map(followToRemove=>followToRemove.match)
             .indexOf(req.params.id); 
             //remove from array
             req.user.matchesFollowed.splice(removeIndex,1);

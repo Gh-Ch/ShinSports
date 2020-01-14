@@ -10,6 +10,13 @@ export interface Entity {
     _id: Number;
   }
 }
+export interface Follow {
+  date: Date;
+  id: Number;
+  match: {
+    _id: Number;
+  }
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -39,10 +46,10 @@ export class SubscribeService {
     return this.http.get<Entity[]>('api/users/interest',{headers}) ;
   }
   
-  getMatchesFollowed(): Observable<Match[]>{
+  getMatchesFollowed(): Observable<Follow[]>{
     const headers = new HttpHeaders()
     .set('Authorization',this.loginService.authToken)
-    return this.http.get<Match[]>('api/users/follow',{headers}) ;
+    return this.http.get<Follow[]>('api/users/follow',{headers}) ;
   }
   
 }

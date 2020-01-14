@@ -23,6 +23,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { MatchElementComponent } from './match-element/match-element.component';
 import { AddMatchComponent } from './add-match/add-match.component';
+import { DisplayMatchesComponent } from './display-matches/display-matches.component';
+import { DisplayCategoryMatchesComponent } from './display-category-matches/display-category-matches.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { AddMatchComponent } from './add-match/add-match.component';
     DisplayCategoriesComponent,
     FrontPageComponent,
     MatchElementComponent,
-    AddMatchComponent
+    AddMatchComponent,
+    DisplayMatchesComponent,
+    DisplayCategoryMatchesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +56,7 @@ import { AddMatchComponent } from './add-match/add-match.component';
     MaterialFileInputModule,
     MatIconModule,
     FlashMessagesModule.forRoot(),
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,10 +9,11 @@ import { LoginComponent } from './login/login.component';
 import { DisplayTeamComponent } from './display-team/display-team.component';
 import { DisplayPlayerComponent } from './display-player/display-player.component';
 import { FrontPageComponent } from './front-page/front-page.component';
-
-
+import {DisplayMatchesComponent} from './display-matches/display-matches.component'
+import {DisplayCategoryMatchesComponent} from'./display-category-matches/display-category-matches.component'
 const routes: Routes = [
   {path: '' , component: FrontPageComponent },
+  {path: 'matches' , component: DisplayMatchesComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addCategory', component: AddCategoryComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'addTeam', component: AddTeamComponent},
   {path: 'displayTeam/:id', component: DisplayTeamComponent},
   {path: 'displayPlayer/:id', component: DisplayPlayerComponent},
-  {path: 'addMatch', component: AddMatchComponent}
+  {path: 'addMatch', component: AddMatchComponent},
+  {path: 'category/:name', component: DisplayCategoryMatchesComponent}
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);

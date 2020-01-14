@@ -93,7 +93,6 @@ addPlayer() {
 }
 
 addTeam() {
-  console.log(this.loginService.authToken)
   const headers = new HttpHeaders()
     // tslint:disable-next-line: max-line-length
     .set('Authorization',this.loginService.authToken)
@@ -119,24 +118,9 @@ addMatch() {
     // tslint:disable-next-line: max-line-length
     .set('Authorization',this.loginService.authToken)
    // headers.append('Authorization', this.loginService.authToken)
+   
+  console.log(this.matchForm.value);
   var fd = new FormData();
-  var stadium = this.matchForm.value.stadium;
-  var competition = this.matchForm.value.competition;
-  var startTime = this.matchForm.value.startTime;
-  var startDate = this.matchForm.value.startDate;
-  var category = this.matchForm.value.category;
-  var teamOne = this.matchForm.value.teamOne;
-  var teamTwo = this.matchForm.value.teamTwo;
-  let matchF={
-    stadium,
-    competition,
-    startTime,
-    startDate,
-    category,
-    teamOne,
-    teamTwo
-  };
-  console.log(matchF);
   fd.append('stadium', this.matchForm.value.stadium);
   fd.append('competition', this.matchForm.value.competition);
   fd.append('startTime', this.matchForm.value.startTime);

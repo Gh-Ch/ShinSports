@@ -17,14 +17,14 @@
   <div class="card-body container">
     <div class="row justify-content-around">
     <div class="col-md-5">
-        <img src="http://localhost:5000/{{match.teamOne.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
-        <h5 class="card-title teamDisplay">{{match.teamOne.name}}</h5>
+      <a routerLink="/displayTeam/{{match.teamOne._id}}" style="color:initial"><img src="http://localhost:5000/{{match.teamOne.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
+        <h5 class="card-title teamDisplay">{{match.teamOne.name}}</h5></a>
     </div>
     <div class="col-md-2" > <h4 class='timeAndDate'>{{match.startDate|date:'MMM d'}}</h4><hr> <h5 class='teamDisplay'>Vs</h5><hr> <h4 class='timeAndDate'>{{match.startTime}}</h4>
     </div>
     <div class="col-md-5">
-        <img src="http://localhost:5000/{{match.teamTwo.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
-        <h5 class="card-title teamDisplay">{{match.teamTwo.name}}</h5>
+      <a routerLink="/displayTeam/{{match.teamTwo._id}}" style="color:initial"><img src="http://localhost:5000/{{match.teamTwo.logo}}" class="card-img-top" style ="height: 100px ; width:100px">
+        <h5 class="card-title teamDisplay">{{match.teamTwo.name}}</h5></a>
     </div>
   </div>
   <hr>
@@ -37,6 +37,10 @@
   <div class="row justify-content-center">
       <p class="title col-6 teamDisplay">Stadium: </p> <p class="col-6 teamDisplay"> {{match.stadium}} </p>
   </div>
+  <p  *ngIf='isLogged' style='text-align: right;'>
+    <button *ngIf='!subbed' class="btn btn-outline-success" (click)='subOrUnsub()'>Follow</button>
+    <button *ngIf='subbed' class="btn btn-outline-danger" (click)='subOrUnsub()'>Unfollow</button>
+  </p>
   </div>
 </div>
 <!-- </mat-expansion-panel> -->
