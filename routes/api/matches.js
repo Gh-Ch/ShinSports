@@ -19,6 +19,7 @@ const validateMatchInput = require('../../validations/match');
 //TODO Test that the two entites are of the same type
 router.post('/',passport.authenticate('jwt',{session:false}),(req,res)=>{
     const {errors , isValid} = validateMatchInput(req.body);
+    console.log(req.body);
     if(!req.user.admin)
     {   
         //If user is not an admin deny creation

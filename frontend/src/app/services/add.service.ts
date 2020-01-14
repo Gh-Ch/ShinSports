@@ -39,6 +39,17 @@ export class AddService {
     president: new FormControl('', Validators.required),
   });
 
+  matchForm: FormGroup = new FormGroup({
+    $id: new FormControl(null),
+    stadium: new FormControl('', Validators.required),
+    competition: new FormControl('', Validators.required),
+    startTime: new FormControl('', Validators.required),
+    startDate: new FormControl(new Date()),
+    category: new FormControl('', Validators.required),
+    teamOne: new FormControl('', Validators.required),
+    teamTwo: new FormControl('', Validators.required),
+  });
+
 logger() {
   if (this.categoryForm.dirty) {
     console.log(this.categoryForm.value);
@@ -87,17 +98,53 @@ addTeam() {
     // tslint:disable-next-line: max-line-length
     .set('Authorization',this.loginService.authToken)
    // headers.append('Authorization', this.loginService.authToken)
-   console.log(this.teamForm.value)
-   var fd = new FormData();
-    fd.append('name',this.teamForm.value.name);
-    fd.append('country',this.teamForm.value.country);
-    fd.append('category',this.teamForm.value.category);
-    fd.append('foundationDate',this.teamForm.value.foundationDate);
-    fd.append('league',this.teamForm.value.league);
-    fd.append('coach',this.teamForm.value.coach);
-    fd.append('president',this.teamForm.value.president);
-    fd.append('logo',this.teamForm.value.logo.files[0]);
+  console.log(this.teamForm.value);
+  var fd = new FormData();
+  fd.append('name',this.teamForm.value.name);
+  fd.append('country',this.teamForm.value.country);
+  fd.append('category',this.teamForm.value.category);
+  fd.append('foundationDate',this.teamForm.value.foundationDate);
+  fd.append('league',this.teamForm.value.league);
+  fd.append('coach',this.teamForm.value.coach);
+  fd.append('president',this.teamForm.value.president);
+  fd.append('logo',this.teamForm.value.logo.files[0]);
   this.http.post('api/teams', fd, {headers})
+    .subscribe((response) => {
+      console.log('repsonse ', response);
+    });
+}
+
+addMatch() {
+  const headers = new HttpHeaders()
+    // tslint:disable-next-line: max-line-length
+    .set('Authorization',this.loginService.authToken)
+   // headers.append('Authorization', this.loginService.authToken)
+  var fd = new FormData();
+  var stadium = this.matchForm.value.stadium;
+  var competition = this.matchForm.value.competition;
+  var startTime = this.matchForm.value.startTime;
+  var startDate = this.matchForm.value.startDate;
+  var category = this.matchForm.value.category;
+  var teamOne = this.matchForm.value.teamOne;
+  var teamTwo = this.matchForm.value.teamTwo;
+  let matchF={
+    stadium,
+    competition,
+    startTime,
+    startDate,
+    category,
+    teamOne,
+    teamTwo
+  };
+  console.log(matchF);
+  fd.append('stadium', this.matchForm.value.stadium);
+  fd.append('competition', this.matchForm.value.competition);
+  fd.append('startTime', this.matchForm.value.startTime);
+  fd.append('startDate', this.matchForm.value.startDate);
+  fd.append('category', this.matchForm.value.category);
+  fd.append('teamOne', this.matchForm.value.teamOne);
+  fd.append('teamTwo', this.matchForm.value.teamTwo);
+  this.http.post('api/matches', fd, {headers})
     .subscribe((response) => {
       console.log('repsonse ', response);
     });

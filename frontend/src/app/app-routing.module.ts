@@ -1,3 +1,4 @@
+import { AddMatchComponent } from './add-match/add-match.component';
 import { AddTeamComponent } from './add-team/add-team.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'addPlayer', component: AddPlayerComponent},
   {path: 'addTeam', component: AddTeamComponent},
   {path: 'displayTeam/:id', component: DisplayTeamComponent},
-  {path: 'displayPlayer/:id', component: DisplayPlayerComponent}
+  {path: 'displayPlayer/:id', component: DisplayPlayerComponent},
+  {path: 'addMatch', component: AddMatchComponent}
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);

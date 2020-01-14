@@ -13,7 +13,7 @@ export class AddPlayerComponent implements OnInit {
   public categories: Category[];
   constructor(private add: AddService ,
              private route : Router ,
-             private displayService : DisplayService, 
+             private displayService : DisplayService,
              private loginService : LoginService ) { }
 
   ngOnInit() {

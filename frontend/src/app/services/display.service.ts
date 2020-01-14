@@ -17,6 +17,9 @@ export class DisplayService {
   getTeam(id: number): Observable<Team> {
     return this.http.get<Team>('api/teams/' + id) ;
   }
+  getTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>('api/teams/') ;
+  }
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>('api/categories/') ;
   }

@@ -22,6 +22,7 @@ import { DisplayCategoriesComponent } from './display-categories/display-categor
 import {MatExpansionModule} from '@angular/material/expansion';
 import { FrontPageComponent } from './front-page/front-page.component';
 import { MatchElementComponent } from './match-element/match-element.component';
+import { AddMatchComponent } from './add-match/add-match.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MatchElementComponent } from './match-element/match-element.component';
     DisplayPlayerComponent,
     DisplayCategoriesComponent,
     FrontPageComponent,
-    MatchElementComponent
+    MatchElementComponent,
+    AddMatchComponent
   ],
   imports: [
     BrowserModule,
