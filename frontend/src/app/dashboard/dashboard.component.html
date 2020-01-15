@@ -3,9 +3,9 @@
     <div class="col-md-4" style="border-right:2px solid rgb(104, 102, 102)">
         <h4 style='text-align: center;'>List of interests:</h4>
       <div *ngFor='let interest of interestList' style='text-align: center;'>
-        <a routerLink="/displayTeam/{{interest.entity._id}}" style="color:initial"><img src="http://localhost:5000/{{interest.entity.logo}}" alt="real" class="center">
+        <a routerLink="/displayTeam/{{interest.entity._id}}" style="color:initial"><img src="http://localhost:5000/{{interest.entity.logo}}" alt="Logo" class="center">
          <p> {{interest.entity.name}}</p></a>
-      </div>  
+      </div>
     </div>
     <div class="col-md-8">
         <h4 style='text-align: center;'>List of Matches Followed:</h4><br>
@@ -42,17 +42,13 @@
           <hr>
           <div class="row justify-content-center">
               <p class="title col-6 teamDisplay">Category: </p> <p class="col-6 teamDisplay"> {{match.match.category}} </p>
-          </div> 
+          </div>
           <div class="row justify-content-center">
               <p class="title col-6 teamDisplay">Competition:</p> <p class="col-6 teamDisplay"> {{match.match.competition}} </p>
           </div>
           <div class="row justify-content-center">
               <p class="title col-6 teamDisplay">Stadium: </p> <p class="col-6 teamDisplay"> {{match.match.stadium}} </p>
           </div>
-          <p  *ngIf='isLogged' style='text-align: right;'>
-            <button *ngIf='!subbed' class="btn btn-outline-success" (click)='subOrUnsub()'>Follow</button>
-            <button *ngIf='subbed' class="btn btn-outline-danger" (click)='subOrUnsub()'>Unfollow</button>
-          </p>
           </div>
         </div>
          </mat-expansion-panel>

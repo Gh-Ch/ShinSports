@@ -112,7 +112,7 @@ router.get('/category/:name',(req,res)=>{
 // @access Public
 router.get('/date',(req,res)=>{
     Match.find()
-       .sort({ startDate: -1})
+       .sort({ startDate: 1})
        .populate('teamOne')
        .populate('teamTwo')
        .then(matches=> {res.json(matches)})
