@@ -25,6 +25,8 @@ import { MatchElementComponent } from './match-element/match-element.component';
 import { AddMatchComponent } from './add-match/add-match.component';
 import { DisplayMatchesComponent } from './display-matches/display-matches.component';
 import { DisplayCategoryMatchesComponent } from './display-category-matches/display-category-matches.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { DisplayCategoryMatchesComponent } from './display-category-matches/disp
     MatchElementComponent,
     AddMatchComponent,
     DisplayMatchesComponent,
-    DisplayCategoryMatchesComponent
+    DisplayCategoryMatchesComponent,
+    DashboardComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     BrowserModule,

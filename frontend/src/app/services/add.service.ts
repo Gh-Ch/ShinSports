@@ -119,16 +119,15 @@ addMatch() {
     .set('Authorization',this.loginService.authToken)
    // headers.append('Authorization', this.loginService.authToken)
    
-  console.log(this.matchForm.value);
-  var fd = new FormData();
-  fd.append('stadium', this.matchForm.value.stadium);
-  fd.append('competition', this.matchForm.value.competition);
-  fd.append('startTime', this.matchForm.value.startTime);
-  fd.append('startDate', this.matchForm.value.startDate);
-  fd.append('category', this.matchForm.value.category);
-  fd.append('teamOne', this.matchForm.value.teamOne);
-  fd.append('teamTwo', this.matchForm.value.teamTwo);
-  this.http.post('api/matches', fd, {headers})
+  const matchFormData = {};
+  matchFormData['stadium']=this.matchForm.value.stadium;
+  matchFormData['competition']=this.matchForm.value.competition;
+  matchFormData['startTime']=this.matchForm.value.startTime;
+  matchFormData['startDate']=this.matchForm.value.startDate;
+  matchFormData['category']=this.matchForm.value.category;
+  matchFormData['teamOne']=this.matchForm.value.teamOne.name;
+  matchFormData['teamTwo']=this.matchForm.value.teamTwo.name;
+  this.http.post('api/matches', matchFormData, {headers})
     .subscribe((response) => {
       console.log('repsonse ', response);
     });

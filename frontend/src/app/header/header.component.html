@@ -11,6 +11,7 @@
 		<ul class="navbar-nav ml-auto">
 		  <li class="nav-item active"><a class="nav-link" href="">Home</a></li>
 		  <li class="nav-item"><a class="nav-link" href="matches">Matches</a></li>
+		  <li class="nav-item" *ngIf="isLogged"><a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="router-link-active" >Dashboard</a></li>
 		  <li class="nav-item" *ngIf="isAdmin"><a class="nav-link" [routerLink]="['addPlayer']" routerLinkActive="router-link-active" >Add Player</a></li>
 		  <li class="nav-item" *ngIf="isAdmin"><a class="nav-link" [routerLink]="['addTeam']" routerLinkActive="router-link-active" >Add Team</a></li>
 		  <li class="nav-item" *ngIf="isAdmin"><a class="nav-link" [routerLink]="['addMatch']" routerLinkActive="router-link-active" >Add Match</a></li>

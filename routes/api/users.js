@@ -157,7 +157,7 @@ admin: req.user.admin,
 //@access  Private
 router.get('/follow',passport.authenticate('jwt',{session: false}), (req, res)=>{
   User.findById(req.user.id)
-      .populate({path: 'matchesFollowed.match'})
+      .populate({path: 'matchesFollowed.match',populate:{path: 'teamOne teamTwo'}})
       .then(user  =>  res.json (user.matchesFollowed))
       .catch(err => console.log(err))
   });

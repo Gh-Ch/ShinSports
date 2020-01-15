@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit {
   else{
     this.isAdmin=false;
   }
-  console.log(this.isAdmin)
   }
   changeState(state:boolean){
     this.isLogged=state;

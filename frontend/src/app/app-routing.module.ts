@@ -11,6 +11,8 @@ import { DisplayPlayerComponent } from './display-player/display-player.componen
 import { FrontPageComponent } from './front-page/front-page.component';
 import {DisplayMatchesComponent} from './display-matches/display-matches.component'
 import {DisplayCategoryMatchesComponent} from'./display-category-matches/display-category-matches.component'
+import {DashboardComponent} from './dashboard/dashboard.component'
+import {PageNotFoundComponentComponent} from './page-not-found-component/page-not-found-component.component'
 const routes: Routes = [
   {path: '' , component: FrontPageComponent },
   {path: 'matches' , component: DisplayMatchesComponent },
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: 'displayTeam/:id', component: DisplayTeamComponent},
   {path: 'displayPlayer/:id', component: DisplayPlayerComponent},
   {path: 'addMatch', component: AddMatchComponent},
-  {path: 'category/:name', component: DisplayCategoryMatchesComponent}
+  {path: 'category/:name', component: DisplayCategoryMatchesComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: '**', component: PageNotFoundComponentComponent}
 ];
 
 export const ROUTING = RouterModule.forRoot(routes);
