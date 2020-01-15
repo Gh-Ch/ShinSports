@@ -14,6 +14,7 @@ export interface LoginResponse {
 })
 export class LoginService {
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
+  @Output() getAdminEmitter: EventEmitter<any> = new EventEmitter();
   authToken:any
   user:any
   constructor(private http: HttpClient) { }
@@ -29,6 +30,9 @@ export class LoginService {
     this.authToken=token;
     this.user=user;
     this.getLoggedInName.emit('true');
+    if(this.user.admin){
+    this.getAdminEmitter.emit('true');
+  }  
   }
   loadToken(){
     const token = localStorage.getItem('id_token')
@@ -41,6 +45,7 @@ export class LoginService {
     this.user = null;
     localStorage.clear();
     this.getLoggedInName.emit(false);
+    this.getAdminEmitter.emit(false);
   }
   loginCall(formValue): Observable<LoginResponse> {
     return this.http.post<LoginResponse>('api/users/login', formValue)

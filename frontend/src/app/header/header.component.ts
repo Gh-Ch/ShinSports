@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   isAdmin: boolean
   constructor(private login: LoginService,private router: Router,private flashMessagesService: FlashMessagesService) { 
     login.getLoggedInName.subscribe(state => this.changeState(state));
+    login.getAdminEmitter.subscribe(state => this.changeStateAdmin(state));
   }
 
   ngOnInit() {
@@ -31,7 +32,9 @@ export class HeaderComponent implements OnInit {
   }
   changeState(state:boolean){
     this.isLogged=state;
-    this.isAdmin=!this.isAdmin;
+  }
+  changeStateAdmin(state:boolean){
+    this.isAdmin=state;
   }
   onLogoutClick(){
     this.login.logout();
